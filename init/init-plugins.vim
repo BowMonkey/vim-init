@@ -156,7 +156,18 @@ if index(g:bundle_group, 'enhanced') >= 0
 	Plug 'junegunn/fzf'
 
 	" 给不同语言提供字典补全，插入模式下 c-x c-k 触发
-	Plug 'asins/vim-dict'
+	"Plug 'asins/vim-dict'  " 这个好像有问题，先删了
+	"vim 字典，供 vim-auto-popmenu使用
+	Plug 'skywind3000/vim-dict'
+	"file type override
+	let g:vim_dict_config = {'html':'html,javascript,css', 'markdown':'text'}
+	"add additional dict folders
+	let g:vim_dict_dict = [
+    \ '~/.vim/dict',
+    \ '~/.config/nvim/dict',
+    \ ]
+	"Disable certain types
+	"let g:vim_dict_config={'text':''}
 
 	" 使用 :FlyGrep 命令进行实时 grep
 	Plug 'wsdjeg/FlyGrep.vim'
@@ -308,9 +319,29 @@ endif
 if index(g:bundle_group, 'nerdtree') >= 0
 	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle', 'NERDTreeCWD', 'NERDTreeFind'] }
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+	Plug 'Xuyuanp/nerdtree-git-plugin'
+
 	let g:NERDTreeMinimalUI = 1
 	let g:NERDTreeDirArrows = 1
 	let g:NERDTreeHijackNetrw = 0
+	let g:NERDTreeShowLineNumbers=1
+	let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+	"打开vim时如果没有文件自动打开NERDTree
+	autocmd vimenter * if !argc()|NERDTree|
+	"当NERDTree为剩下的唯一窗口时自动关闭
+	autocmd bufenter  *  if(winnr("$")  ==  1 && exists("b:NERDTree")  && b:NERDTree.isTabTree()) | q | endif
+
 	noremap <space>nn :NERDTree<cr>
 	noremap <space>no :NERDTreeFocus<cr>
 	noremap <space>nm :NERDTreeMirror<cr>
@@ -415,17 +446,6 @@ endif
 " echodoc：超级轻量级代码补全工具
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'vim-auto-popmenu') >= 0
-	"vim 字典，供 vim-auto-popmenu使用
-	Plug 'skywind3000/vim-dict'
-	"file type override
-	let g:vim_dict_config = {'html':'html,javascript,css', 'markdown':'text'}
-	"add additional dict folders
-	let g:vim_dict_dict = [
-    \ '~/.vim/dict',
-    \ '~/.config/nvim/dict',
-    \ ]
-	"Disable certain types
-	"let g:vim_dict_config={'text':''}
 	
 	Plug 'skywind3000/vim-auto-popmenu'
 	" enable this plugin for filetypes, '*' for all files.
