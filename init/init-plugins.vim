@@ -15,7 +15,7 @@
 "----------------------------------------------------------------------
 if !exists('g:bundle_group')
 	let g:bundle_group = ['basic', 'tags', 'enhanced', 'filetypes', 'textobj']
-	let g:bundle_group += ['tags', 'airline', 'nerdtree', 'ale', 'echodoc']
+	let g:bundle_group += ['tags', 'airline', 'nerdtree', 'ale', 'echodoc', 'vim-auto-popmenu']
 	let g:bundle_group += ['leaderf']
 endif
 
@@ -411,6 +411,33 @@ if index(g:bundle_group, 'echodoc') >= 0
 	let g:echodoc#enable_at_startup = 1
 endif
 
+"----------------------------------------------------------------------
+" echodoc：超级轻量级代码补全工具
+"----------------------------------------------------------------------
+if index(g:bundle_group, 'vim-auto-popmenu') >= 0
+	"vim 字典，供 vim-auto-popmenu使用
+	Plug 'skywind3000/vim-dict'
+	"file type override
+	let g:vim_dict_config = {'html':'html,javascript,css', 'markdown':'text'}
+	"add additional dict folders
+	let g:vim_dict_dict = [
+    \ '~/.vim/dict',
+    \ '~/.config/nvim/dict',
+    \ ]
+	"Disable certain types
+	"let g:vim_dict_config={'text':''}
+	
+	Plug 'skywind3000/vim-auto-popmenu'
+	" enable this plugin for filetypes, '*' for all files.
+	"let g:apc_enable_ft = {'text':1, 'markdown':1, 'php':1}
+	let g:apc_enable_ft = {'*':1}
+	" source for dictionary, current or other loaded buffers, see ':help cpt'
+	set cpt=.,k,w,b
+	" don't select the first item.
+	set completeopt=menu,menuone,noselect
+	" suppress annoy messages.
+	set shortmess+=c
+endif
 
 "----------------------------------------------------------------------
 " LeaderF：CtrlP / FZF 的超级代替者，文件模糊匹配，tags/函数名 选择
