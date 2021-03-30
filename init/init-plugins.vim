@@ -156,11 +156,11 @@ if index(g:bundle_group, 'enhanced') >= 0
 	Plug 'junegunn/fzf'
 
 	" 给不同语言提供字典补全，插入模式下 c-x c-k 触发
-	"Plug 'asins/vim-dict'  " 这个好像有问题，先删了
+	Plug 'asins/vim-dict'
 	"vim 字典，供 vim-auto-popmenu使用
 	Plug 'skywind3000/vim-dict'
 	"file type override
-	let g:vim_dict_config = {'html':'html,javascript,css', 'markdown':'text'}
+	let g:vim_dict_config = {'html':'html,javascript,css', 'markdown':'text', 'md':'text', 'txt':'text'}
 	"add additional dict folders
 	let g:vim_dict_dict = [
     \ '~/.vim/dict',

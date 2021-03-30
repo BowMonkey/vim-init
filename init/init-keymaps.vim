@@ -185,9 +185,9 @@ inoremap <m-k> <c-\><c-o>gk
 cnoremap <m-h> <c-left>
 cnoremap <m-l> <c-right>
 
-" ALT+y 删除到行末
-noremap <m-y> d$
-inoremap <m-y> <c-\><c-o>d$
+" ALT+d 删除到行末
+noremap <m-d> d$
+inoremap <m-d> <c-\><c-o>d$
 
 
 "----------------------------------------------------------------------
