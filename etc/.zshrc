@@ -94,7 +94,7 @@ antigen bundle zdharma/fast-syntax-highlighting
 # antigen bundle zsh-users/zsh-autosuggestions
 
 antigen bundle willghatch/zsh-cdr
-# antigen bundle zsh-users/zaw
+antigen bundle zsh-users/zaw
 
 # check login shell
 if [[ -o login ]]; then
@@ -107,8 +107,8 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 typeset -A ZSH_HIGHLIGHT_STYLES
 
-# ZSH_HIGHLIGHT_STYLES[command]=fg=white,bold
-# ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
+ZSH_HIGHLIGHT_STYLES[command]=fg=white,bold
+ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
 
 ZSH_HIGHLIGHT_STYLES[default]=none
 ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=009
@@ -157,7 +157,7 @@ setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
 setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
 setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
-setopt HIST_VERIFY # Don't execute immediately upon history expansion.
+setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 
 # setup for deer
 autoload -U deer
@@ -198,3 +198,7 @@ DISABLE_CORRECTION="true"
 # completion detail
 zstyle ':completion:*:complete:-command-:*:*' ignored-patterns '*.pdf|*.exe|*.dll'
 zstyle ':completion:*:*sh:*:' tag-order files
+
+# add cheat
+export CHEAT_CONFIG_PATH="~/.config/cheat/conf.yml"
+export PATH=/home/coco/bin:$PATH
