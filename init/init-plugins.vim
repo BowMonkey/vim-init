@@ -325,7 +325,7 @@ if index(g:bundle_group, 'nerdtree') >= 0
 	let g:NERDTreeDirArrows = 1
 	let g:NERDTreeHijackNetrw = 0
 	let g:NERDTreeShowLineNumbers=1
-	let g:NERDTreeIndicatorMapCustom = {
+	let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
@@ -451,6 +451,7 @@ if index(g:bundle_group, 'vim-auto-popmenu') >= 0
 	" enable this plugin for filetypes, '*' for all files.
 	"let g:apc_enable_ft = {'text':1, 'markdown':1, 'php':1}
 	let g:apc_enable_ft = {'*':1}
+	let g:apc_cr_confirm = 1
 	" source for dictionary, current or other loaded buffers, see ':help cpt'
 	set cpt=.,k,w,b
 	" don't select the first item.
